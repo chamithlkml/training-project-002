@@ -4,63 +4,57 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sign Up</title>
-	<link rel="stylesheet" type="text/css" href="signupstyle.css">
+	<link rel="stylesheet" type="text/css" href="/styles/src/app.css">
 </head>
-<body>
- 
-<div class="container">
-	<div class="container-2">
-		<div class="header">
-			<h4>Welcome to Project.namefeeder.com</h4> 
-		</div>
-
-		<form name="signup" action="send.php" method="post">
-		<div class="row" >
-				<p class="text1">sign up to project.namefeeder.com</p><b/>
-			
-			<div class="row-body">
-				<p class="text2">First name2</p>
-				<td><input type="textbox" placeholder="Enter First name" autofocus name="fname"></td>
+<body> 
+	<div class="container">
+		<div class="container-2">
+			<div class="header">
+				<h4>Welcome to Project.namefeeder.com</h4> 
 			</div>
-			<div class="row-body">
-				<p class="text2">Last name</p>
-				<td><input type="textbox" placeholder="Enter Last name" autofocus name="lname"></td>
+			<form id="signup_form" name="signup" action="send.php" method="post">
+				<div class="row" >
+						<p class="text1">sign up to project.namefeeder.com</p><b/>
+					<div class="row-body">
+						<p class="text2">First name</p>
+						<td><input type="textbox" id="fname" placeholder="Enter First name" name="fname"></td>
+					</div>
+					<div class="row-body">
+						<p class="text2">Last name</p>
+						<td><input type="textbox" placeholder="Enter Last name" name="lname"></td>
+					</div>
+					<div class="row-body">
+						<p class="text2">Email</p>
+						<td><input type="email" placeholder="Enter Email" name="nemail"></td>
+					</div>
+					<div class="row-body">
+						<p class="text2">Birthday</p>
+						<td><input type="date" placeholder="Select Birthday" name="bdate"></td>
+					</div>
+					<div class="row-body">
+						<p class="text2">Create Password</p>
+						<td><input type="Password" placeholder="Enter Password" name="npass"></td>
+					</div>
+					<div class="row-body">
+						<p class="text2">Confirm Password</p>
+						<td><input type="Password" placeholder="Re-Enter Password" name="rpass"></td>
+					</div>
+					<div class="row-2">
+					<div class="row-body2">
+						<input type="submit" name="submit" value="Sign up"/>
+					</div>
+						<div class="row-body2">
+						<input type="reset" name="reset" value="Reset"/>
+					</div>
+					</div>
+				</div>
+			</form>
+			<div class="footer">
+				<p class="text3">Thank You</p>
 			</div>
-			<div class="row-body">
-				<p class="text2">Email</p>
-				<td><input type="email" placeholder="Enter Email" autofocus name="nemail"></td>
-			</div>
-			<div class="row-body">
-				<p class="text2">Birthday</p>
-				<td><input type="date" placeholder="Select Birthday" autofocus name="bdate"></td>
-			</div>
-			<div class="row-body">
-				<p class="text2">Create Password</p>
-				<td><input type="Password" placeholder="Enter Password" autofocus name="npass"></td>
-			</div>
-			<div class="row-body">
-				<p class="text2">Confirm Password</p>
-				<td><input type="Password" placeholder="Re-Enter Password" autofocus name="rpass"></td>
-			</div>
-
-			<div class="row-2">
-			<div class="row-body2">
-				<input type="submit" name="submit" value="Sign up"/>
-			</div>
-				<div class="row-body2">
-				<input type="reset" name="reset" value="Reset"/>
-			</div>
-			</div>
-
-		</div>
-		</form>
-
-
-		<div class="footer">
-			<p class="text3">Thank You</p>
 		</div>
 	</div>
-</div>
-
+	<script src="js/vendor/jquery-3.6.3.min.js"></script>
+	<script src="/js/src/app.js"></script>
 </body>
 </html>
