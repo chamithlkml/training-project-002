@@ -12,40 +12,39 @@
 			<div class="header">
 				<h4>Welcome to Project.namefeeder.com</h4> 
 			</div>
-			<span>Sign up here to work with Name Feeder Technologies 1</span>
 			<form id="signup_form" name="signup" action="send.php" method="post">
 				<div class="row" >
-						<p class="text1">sign up to project.namefeeder.com</p><b/>
+						<p class="text1">sign up to project.namefeeder.com</p><br/>
 					<div class="row-body">
 						<p class="text2">First name</p>
-						<td><input type="textbox" id="fname" placeholder="Enter First name" name="fname"></td>
+						<td><input type="textbox" class="formInput" id="fname" placeholder="Enter First name" autofocus name="fname"></td>
 					</div>
 					<div class="row-body">
 						<p class="text2">Last name</p>
-						<td><input type="textbox" placeholder="Enter Last name" name="lname"></td>
+						<td><input type="textbox" class="formInput" id="lname" placeholder="Enter Last name" autofocus name="lname"></td>
 					</div>
 					<div class="row-body">
 						<p class="text2">Email</p>
-						<td><input type="email" placeholder="Enter Email" name="nemail"></td>
+						<td><input type="email" class="formInput" id="nemail" placeholder="Enter Email" autofocus name="nemail"></td>
 					</div>
 					<div class="row-body">
 						<p class="text2">Birthday</p>
-						<td><input type="date" placeholder="Select Birthday" name="bdate"></td>
+						<td><input type="date" id="bday" class="formInput" placeholder="Select Birthday" autofocus name="bdate"></td>
 					</div>
 					<div class="row-body">
 						<p class="text2">Create Password</p>
-						<td><input type="Password" placeholder="Enter Password" name="npass"></td>
+						<td><input type="Password" id="pass" class="formInput" placeholder="Enter Password" autofocus name="npass"></td>
 					</div>
 					<div class="row-body">
 						<p class="text2">Confirm Password</p>
-						<td><input type="Password" placeholder="Re-Enter Password" name="rpass"></td>
+						<td><input type="Password" id="conpass" class="formInput" placeholder="Re-Enter Password" autofocus name="rpass"></td>
 					</div>
 					<div class="row-2">
 					<div class="row-body2">
-						<input type="submit" name="submit" value="Sign up"/>
+						<input type="submit" class="formButton"  name="submit" value="Sign up"/>
 					</div>
 						<div class="row-body2">
-						<input type="reset" name="reset" value="Reset"/>
+						<input type="reset" class="formButton" name="reset" value="Reset"/>
 					</div>
 					</div>
 				</div>
