@@ -12,10 +12,11 @@
 }
 
 .container-2{
-	width: 375px;
+	width: 475px;
 	padding: 0px;
 	margin: 0px auto 0px auto;
-	background: #00ced1ff;
+	background: rgb(144, 208, 209);
+	border-radius: 10px;
 }
 
 .header{
@@ -35,6 +36,7 @@
 	width: 80%;
 	margin: 10px auto 20px auto;
 	background: #eeeeeeff;
+	border-radius: 10px;
 
 }
 
@@ -59,7 +61,7 @@
 
 .footer{
 	width: 60%;
-	padding: 0px;
+	padding: 10px;
 	border-top: 1px solid black;
 	margin: 0px auto 10px auto;
 
@@ -74,8 +76,9 @@
 }
 
 .text2{
-font-size:12px ;
+font-size:14px ;
 color: black;
+padding: 5px;
 }
 
 
@@ -92,8 +95,9 @@ text-align: center;
 input[type=submit] {
   background-color: #04AA6D;
   color: white;
-  width: 60px;
-  padding: 2px 10px;
+  width: 80px;
+  font-size: 18px;
+  padding: 4px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -105,8 +109,9 @@ input[type=submit] {
 input[type=reset] {
   background-color: #04AA6D;
   color: white;
-  width: 60px;
-  padding: 2px 10px;
+  width: 80px;
+  font-size: 18px;
+  padding: 4px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -116,7 +121,8 @@ input[type=reset] {
 
 input[type=textbox],input[type=email],input[type=date],input[type=Password]  {
   border-radius: 6px;
-  font-size: 12px;
-  width: 220px;
+  font-size: 14px;
+  padding: 3px;
+  width: 300px;
  
 }
