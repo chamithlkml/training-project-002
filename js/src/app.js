@@ -1,7 +1,9 @@
 $(window).on('load', function(){
-$(".signup").css("display","none");
+
 
 // Navigate user to SignUp form
+    $(".signup").css("display","none");
+
 $("#linkcreatAcc").click(function(){
    $(".signin").css("display","none");
    $(".signup").css("display","");
@@ -13,57 +15,119 @@ $("#linkloging").click(function(){
     $(".signup").css("display","none");
  });
 
-// Code sample to call a method on its value changed event
-// $(document).on("change","#fname", function(){
-//     console.log('firstname changed');
-// });
 
-var my_int = 1;
-var my_sstr = 'asdfadsf';
-let non_empty_fields = ['fname', 'lname'];// Javascript array
-// console.log(non_empty_fields[0]);
-// console.log(non_empty_fields.length);
-// non_empty_fields.push()
-// non_empty_fields.pop{}
-// non_empty_fields.shift
-// non_empty_fields.unshift
-
-// loop through array, Iteration
-// non_empty_fields.forEach(function(el){
-//     console.log(el);
-// });
-
-let first_name_field = {
-    id: 'fname',
-    name: 'First Name',
-    error_id: 'fname_error'
-};
-
-// console.log(check_empty_fields);
-// console.log(check_empty_fields['id']);
-// console.log(check_empty_fields['error_id']);
-
+//Arays for form unput
 let check_for_emptyness = [
     {
         id: 'fname',
-        name: 'First Name',
-        error_id: 'fname_error'
+        error_id: 'fname_error',
+        name: 'First name'
     },
     {
         id: 'lname',
-        name: 'Last Name',
-        error_id: 'lname_error'
+        error_id: 'lname_error',
+        name: 'Last name'
+    },
+    {
+        id: 'nemail',
+        error_id: 'email_error',
+        name: 'Email address'
+    },
+    {
+        id: 'bday',
+        error_id: 'bday_error',
+        name: 'Birth day'
+    },
+    {
+        id: 'pass',
+        error_id: 'pass_error',
+        name: 'Password'
+    },
+    {
+        id: 'conpass',
+        error_id: 're_pass_error',
+        name: 'Confirm Password'
     }
 ];
+//For check validation of input
+let input_email_validation=true;
+let password_comfirm_field=true;
+let input_error=true;
+let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
 
+//Check validation when form editing
 check_for_emptyness.forEach(function(field){
-    console.log('id: ' + field['id']);
-    console.log('name: ' + field['name']);
-    console.log('error id: '+field['error_id']);
+    $(document).on("change", '#'+field['id'], function(){
+        let input_value =$(this).val();
+        if(input_value=="" && field['id']!= 'conpass'){
+            $('#'+field['error_id']).html("**"+field['name']+" should not be empty");  
+        }else{
+            $('#'+field['error_id']).html("");
+        };
+        if(field['id']=="nemail" && regex.test(input_value)==false){
+            $('#'+field['error_id']).html("**Invalid Email Address ");   
+ 
+        };
+        if($("#pass").val() != $("#conpass").val()){
+            $("#re_pass_error").html("**Password not matched");
+            password_comfirm_field=true;
+        }else{
+            password_comfirm_field=false;
+        };
+    });
+
 });
+//check validation when submit
+$('#signup_form').on('submit', function(e){
 
+    check_for_emptyness.forEach(function(field){
+        let input_value =$('#'+field['id']).val();
+        if(input_value=="" ){
+            $('#'+field['error_id']).html("**"+field['name']+" should not be empty");
+            input_error=true;    
+        }else{
+            $('#'+field['error_id']).html("");
+            input_error=false;
+        };
+    });
 
-non_empty_fields.forEach(function(input_id){
+    if(regex.test($("#nemail").val())==false){
+        $("#email_error").html("**Invalid Email Address "); 
+        input_email_validation=true;  
+    }else{
+        input_email_validation=false;
+    };
+  
+    if(input_email_validation==false && password_comfirm_field==false && input_error==false){
+        e.preventDefault();
+        console.log('my form submitted');
+    }else{
+       e.preventDefault();
+       console.log('my form not submitted');
+    }
+});
+}); 
+
+ //Code sample to call a method on its value changed event
+ //$(document).on("change","#fname", function(){
+ //    console.log('firstname changed');
+ //});
+
+ //var my_int = 1;
+// var my_sstr = 'asdfadsf';
+ //let non_empty_fields = ['fname', 'lname'];// Javascript array
+ // console.log(non_empty_fields[0]);
+ // console.log(non_empty_fields.length);
+ // non_empty_fields.push()
+ // non_empty_fields.pop{}
+ // non_empty_fields.shift
+ // non_empty_fields.unshift
+ 
+ // loop through array, Iteration
+ // non_empty_fields.forEach(function(el){
+ //     console.log(el);
+ // });
+/*check_for_emptyness.forEach(function(input_id){
     $(document).on("change", '#'+input_id, function(){
         // Get value of the input example 1
         // let input_value = $('#'+input_id).val();
@@ -71,8 +135,8 @@ non_empty_fields.forEach(function(input_id){
         let input_value = $(this).val();
         console.log('input value: '+input_value);
     });
-});
-
+});*/
+/*
 let is_form_validated = function(){
 
    let first_name_validation = function(){
@@ -153,18 +217,4 @@ let is_form_validated = function(){
     }else{
         return false;
     }
-};
-
-$('#signup_form').on('submit', function(e){
-    
-
-    if(is_form_validated()==true){
-        e.preventDefault();
-        console.log('my form submitted');
-        // @todo Show error messages below the inputs
-    }else{
-        e.preventDefault();
-        console.log('my form not submitted');
-    }
-});
-});
+}; */
