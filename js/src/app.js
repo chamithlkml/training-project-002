@@ -16,7 +16,7 @@ $("#linkloging").click(function(){
  });
 
 
-//Arays for form unput
+//Arays for form input
 let check_for_emptyness = [
     {
         id: 'fname',
@@ -99,10 +99,10 @@ $('#signup_form').on('submit', function(e){
     };
   
     if(input_email_validation==false && password_comfirm_field==false && input_error==false){
-        e.preventDefault();
+       // e.preventDefault();
         console.log('my form submitted');
     }else{
-       e.preventDefault();
+      // e.preventDefault();
        console.log('my form not submitted');
     }
 });
