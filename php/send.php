@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
     $last_name=input_varify( $_POST['lname']);
     $email=input_varify( $_POST['nemail']);
     $birthday=$_POST['bdate'];
-    $password=input_varify( $_POST['npass']);
+    $password=protect_password( $_POST['npass']);
 
     //echo $first_name;
    // echo "<br>";
@@ -60,6 +60,10 @@ function input_varify($data){
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data); 
+    return $data;
+}
+function protect_password($data){
+    $data = md5($data);
     return $data;
 }
 
