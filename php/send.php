@@ -19,21 +19,35 @@ if(isset($_POST['submit'])){
     $birthday=$_POST['bdate'];
     $password=protect_password( $_POST['npass']);
 
-    //echo $first_name;
-   // echo "<br>";
-    //echo $last_name;
-   // echo "<br>";
-    //echo $email;
-   // echo "<br>";
-    //echo $birthday;
-    //echo "<br>";
-    //echo $password;
-   // echo "<br>";
-
-    if (insertDetails($con, $first_name, $last_name,$email,$birthday,$password))
+    if (check_existing_email($con,$email))
     {
-        echo "Detail inserted sucsessfuly";
+        if (insertDetails($con, $first_name, $last_name,$email,$birthday,$password))
+        {
+            echo "Detail inserted sucsessfuly";
+        }else{
+            echo "Error in registration";
+        };
+    }else{
+        echo "Allready registerd Email Address ";
+    };
+}
+
+if(isset($_POST['signin'])){
+
+    $con = config::connect();
+
+    $email = "";
+    $password ="";
+
+    $email=input_varify( $_POST['emailLogin']);
+    $password=protect_password( $_POST['passLogin']);
+
+    if (login_details($con,$email,$password))
+    {
+        echo "Login sucsessfuly";
        
+    }else{
+        echo "Email or Username Invalid";
     };
 }
 
@@ -54,6 +68,47 @@ function insertDetails($con, $first_name, $last_name,$email,$birthday,$password)
     $query -> bindParam(":pass_v",$password);
 
     return $query->execute();
+}
+
+function login_details($con,$email,$password)
+{
+
+    $query = $con->prepare("
+    
+        SELECT * FROM users WHERE email=:email_v AND pass=:pass_v
+    
+    ");
+
+    $query -> bindParam(":email_v",$email);
+    $query -> bindParam(":pass_v",$password);
+    $query->execute();
+
+    if ($query->rowCount()==1)
+    {
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function check_existing_email($con,$email)
+{
+
+    $query = $con->prepare("
+    
+        SELECT * FROM users WHERE email=:email_v 
+    
+    ");
+
+    $query -> bindParam(":email_v",$email);
+    $query->execute();
+
+    if ($query->rowCount()==0)
+    {
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function input_varify($data){

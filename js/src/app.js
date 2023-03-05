@@ -102,7 +102,7 @@ $('#signup_form').on('submit', function(e){
        // e.preventDefault();
         console.log('my form submitted');
     }else{
-      // e.preventDefault();
+       e.preventDefault();
        console.log('my form not submitted');
     }
 });
