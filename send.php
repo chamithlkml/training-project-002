@@ -1,4 +1,4 @@
-<?php include_once('conn.php') ?>
+<?php include_once('php/conn.php') ?>
 <?php
 
 if(isset($_POST['submit'])){
