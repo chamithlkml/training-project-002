@@ -1,5 +1,21 @@
-<?php include_once('php/conn.php') ?>
 <?php
+use namefeeder\Database;
+
+# Single include
+require_once(realpath(__DIR__) . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'inc.php');
+# OOP Class(Properties, methods) --> Object
+$database = new Database(DB, USER, PASSWORD);
+# Public property
+// echo $database->db_type .  "\n";
+
+// $database->getUserByEmail();
+$database->getUserByEmail('someuser@email.com'); die;
+
+#private property
+// echo $database->db_name . "\n";die;
+
+#protected property
+// echo $database->sample . "\n";
 
 if(isset($_POST['submit'])){
 

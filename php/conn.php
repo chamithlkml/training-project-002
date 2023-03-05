@@ -4,7 +4,8 @@ class config {
 
      public static function connect()
      {
-          require 'config.php';
+          # Don't require files inside methods
+          // require 'config.php';
           $host = DB_HOST;
           $db   = DB;
           $user = USER;
