@@ -28,6 +28,13 @@ class Database{
 
     }
 
+    public function createUser(string $first_name, string $last_name, string $email, string $birthday): object
+    {
+        // @todo: Insert data to the database
+
+        return new \stdClass();
+    }
+
     public function getUserByEmail(string $email=''): object
     {
         $obj = new \stdClass();

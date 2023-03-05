@@ -4,7 +4,7 @@ use namefeeder\Database;
 # Single include
 require_once(realpath(__DIR__) . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'inc.php');
 # OOP Class(Properties, methods) --> Object
-$database = new Database(DB, USER, PASSWORD);
+$database = new Database(DB_HOST, DB, USER, PASSWORD);
 # Public property
 // echo $database->db_type .  "\n";
 
