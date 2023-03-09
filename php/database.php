@@ -15,8 +15,8 @@ class Database{
     public function createUser( string $first_name = '' , string $last_name = '' , string $email = '' , string $birthday = '' , string $password = '' ): object
     {
         // @todo: Insert data to the database
-        $con = $this->connectToDb();
-        $query =$con->prepare("
+       // $con = $this->connectToDb();
+        $query =$this->connectToDb()->prepare("
     
         INSERT INTO users (first_name,last_name,email,birthday,pass,created_on)
         VALUES(:first_name_v,:last_name_v,:email_v,:birthday_v,:pass_v, now())
@@ -35,7 +35,8 @@ class Database{
 //Method for sign in
     public function sign_in (string $email='', string $password = '')
     {
-      //  $con = $this->connectToDb();
+       // $obj = new \stdClass();
+       // $con = $this->connectToDb();
         $query = $this->connectToDb()->prepare("
     
         SELECT * FROM users WHERE email=:email_v AND pass=:pass_v
@@ -45,9 +46,12 @@ class Database{
     $query -> bindParam(":email_v",$email);
     $query -> bindParam(":pass_v",$password);
     $query->execute(); 
-
+    $user = $query->fetchAll();
     if ($query->rowCount()==1)
     {
+        session_start();
+        $_SESSION['first_name'] = "suneth";
+        $_SESSION['last_name'] = $user[0]['last_name'];
         return true;
     }else{
         return false;

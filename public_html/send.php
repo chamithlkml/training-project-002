@@ -10,7 +10,7 @@ $database = new Database(DB_HOST, DB, USER, PASSWORD);
 
 //  sign up 
 if(isset($_POST['submit'])){
-
+ 
     $first_name=input_varify( $_POST['fname']);
     $last_name=input_varify( $_POST['lname']);
     $email=input_varify( $_POST['nemail']);
@@ -38,7 +38,7 @@ if(isset($_POST['signin'])){
 
     if ($database->sign_in($email,$password))
     {
-        echo "Login sucsessfuly";
+        header("location:profile.php");
        
     }else{
         echo "Email or Username Invalid";

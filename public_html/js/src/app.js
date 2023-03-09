@@ -106,6 +106,47 @@ $('#signup_form').on('submit', function(e){
        console.log('my form not submitted');
     }
 });
+
+//Check sign in Error massege
+//Check On click Error
+$(document).on("change","#nemailLogin",function()
+{
+   if ($("#nemailLogin").val()=="")
+   {
+    $("#email_login_error").html ("***Email Address should not be empty");
+   }else{
+    $("#email_login_error").html ("");
+   }
+});
+
+$(document).on("change","#passLogin",function()
+{
+   if ($("#passLogin").val()=="")
+   {
+    $("#pass_login_error").html ("***Password should not be empty");
+   }else{
+    $("#pass_login_error").html ("");
+   }
+});
+
+//Check on Submit
+$('#signin_form').on('submit', function(e){
+
+   if ($("#nemailLogin").val()=="")
+   {
+    $("#email_login_error").html ("***Email Address should not be empty");
+    e.preventDefault();
+   }
+   if ($("#passLogin").val()=="")
+   {
+    $("#pass_login_error").html ("***Password should not be empty");
+    e.preventDefault();
+   }
+  
+
+    
+});
+
 }); 
 
  //Code sample to call a method on its value changed event
