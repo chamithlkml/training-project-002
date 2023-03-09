@@ -2,32 +2,14 @@
 use namefeeder\Database;
 
 # Single include
-require_once(realpath(__DIR__) . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'inc.php');
+require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR . 'php'. DIRECTORY_SEPARATOR . 'inc.php');
+
 # OOP Class(Properties, methods) --> Object
 $database = new Database(DB_HOST, DB, USER, PASSWORD);
-# Public property
-// echo $database->db_type .  "\n";
 
-// $database->getUserByEmail();
-$database->getUserByEmail('someuser@email.com'); die;
 
-#private property
-// echo $database->db_name . "\n";die;
-
-#protected property
-// echo $database->sample . "\n";
-
+//  sign up 
 if(isset($_POST['submit'])){
-
-    $con = config::connect();
-
-   
-
-    $first_name="";
-    $last_name = "";
-    $email = "";
-    $birthday ="";
-    $password ="";
 
     $first_name=input_varify( $_POST['fname']);
     $last_name=input_varify( $_POST['lname']);
@@ -35,30 +17,26 @@ if(isset($_POST['submit'])){
     $birthday=$_POST['bdate'];
     $password=protect_password( $_POST['npass']);
 
-    if (check_existing_email($con,$email))
+    if ($database->getUserByEmail($email))
     {
-        if (insertDetails($con, $first_name, $last_name,$email,$birthday,$password))
+ 
+        if ($database->createUser($first_name, $last_name,$email,$birthday,$password))
         {
             echo "Detail inserted sucsessfuly";
-        }else{
+         }else{
             echo "Error in registration";
-        };
+         };
     }else{
         echo "Allready registerd Email Address ";
     };
 }
-
+//sign in
 if(isset($_POST['signin'])){
-
-    $con = config::connect();
-
-    $email = "";
-    $password ="";
 
     $email=input_varify( $_POST['emailLogin']);
     $password=protect_password( $_POST['passLogin']);
 
-    if (login_details($con,$email,$password))
+    if ($database->sign_in($email,$password))
     {
         echo "Login sucsessfuly";
        
@@ -66,67 +44,7 @@ if(isset($_POST['signin'])){
         echo "Email or Username Invalid";
     };
 }
-
-function insertDetails($con, $first_name, $last_name,$email,$birthday,$password)
-{
-
-    $query = $con->prepare("
-    
-        INSERT INTO users (first_name,last_name,email,birthday,pass)
-        VALUES(:first_name_v,:last_name_v,:email_v,:birthday_v,:pass_v)
-    
-    ");
-
-    $query -> bindParam(":first_name_v",$first_name);
-    $query -> bindParam(":last_name_v",$last_name);
-    $query -> bindParam(":email_v",$email);
-    $query -> bindParam(":birthday_v",$birthday);
-    $query -> bindParam(":pass_v",$password);
-
-    return $query->execute();
-}
-
-function login_details($con,$email,$password)
-{
-
-    $query = $con->prepare("
-    
-        SELECT * FROM users WHERE email=:email_v AND pass=:pass_v
-    
-    ");
-
-    $query -> bindParam(":email_v",$email);
-    $query -> bindParam(":pass_v",$password);
-    $query->execute();
-
-    if ($query->rowCount()==1)
-    {
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function check_existing_email($con,$email)
-{
-
-    $query = $con->prepare("
-    
-        SELECT * FROM users WHERE email=:email_v 
-    
-    ");
-
-    $query -> bindParam(":email_v",$email);
-    $query->execute();
-
-    if ($query->rowCount()==0)
-    {
-        return true;
-    }else{
-        return false;
-    }
-}
-
+//input data check
 function input_varify($data){
     $data = trim($data);
     $data = stripslashes($data);

@@ -7,4 +7,10 @@ use namefeeder;
     email VARCHAR(100) NOT NULL,
     birthday DATE NOT NULL,
     pass VARCHAR(40) NOT NULL
+    created_on DATETIME,
+    updated_on DATETIME,
+    deleted_on DATETIME
+
  );
+
+
