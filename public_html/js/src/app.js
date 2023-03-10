@@ -1,23 +1,23 @@
-$(window).on('load', function(){
+$(window).on('load', function () {
 
 
 // Navigate user to SignUp form
     $(".signup").css("display","none");
 
-$("#linkcreatAcc").click(function(){
-   $(".signin").css("display","none");
-   $(".signup").css("display","");
-});
+    $("#linkcreatAcc").click(function () {
+        $(".signin").css("display","none");
+        $(".signup").css("display","");
+    });
 
 // Navigate user to SignIn form
-$("#linkloging").click(function(){
-    $(".signin").css("display","");
-    $(".signup").css("display","none");
- });
+    $("#linkloging").click(function () {
+        $(".signin").css("display","");
+        $(".signup").css("display","none");
+    });
 
 
 //Arays for form input
-let check_for_emptyness = [
+    let check_for_emptyness = [
     {
         id: 'fname',
         error_id: 'fname_error',
@@ -48,106 +48,99 @@ let check_for_emptyness = [
         error_id: 're_pass_error',
         name: 'Confirm Password'
     }
-];
+    ];
 //For check validation of input
-let input_email_validation=true;
-let password_comfirm_field=true;
-let input_error=true;
-let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+    let input_email_validation = true;
+    let password_comfirm_field = true;
+    let input_error = true;
+    let regex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
 
 //Check validation when form editing
-check_for_emptyness.forEach(function(field){
-    $(document).on("change", '#'+field['id'], function(){
-        let input_value =$(this).val();
-        if(input_value=="" && field['id']!= 'conpass'){
-            $('#'+field['error_id']).html("**"+field['name']+" should not be empty");  
-        }else{
-            $('#'+field['error_id']).html("");
-        };
-        if(field['id']=="nemail" && regex.test(input_value)==false){
-            $('#'+field['error_id']).html("**Invalid Email Address ");   
- 
-        };
-        if($("#pass").val() != $("#conpass").val()){
-            $("#re_pass_error").html("**Password not matched");
-            password_comfirm_field=true;
-        }else{
-            password_comfirm_field=false;
-        };
-    });
+    check_for_emptyness.forEach(function (field) {
+        $(document).on("change", '#' + field['id'], function () {
+            let input_value = $(this).val();
+            if (input_value == "" && field['id'] != 'conpass') {
+                $('#' + field['error_id']).html("**" + field['name'] + " should not be empty");
+            } else {
+                $('#' + field['error_id']).html("");
+            };
+            if (field['id'] == "nemail" && regex.test(input_value) == false) {
+                $('#' + field['error_id']).html("**Invalid Email Address ");
+            };
+            if ($("#pass").val() != $("#conpass").val()) {
+                $("#re_pass_error").html("**Password not matched");
+                password_comfirm_field = true;
+            } else {
+                password_comfirm_field = false;
+            };
+        });
 
-});
+    });
 //check validation when submit
-$('#signup_form').on('submit', function(e){
+    $('#signup_form').on('submit', function (e) {
 
-    check_for_emptyness.forEach(function(field){
-        let input_value =$('#'+field['id']).val();
-        if(input_value=="" ){
-            $('#'+field['error_id']).html("**"+field['name']+" should not be empty");
-            input_error=true;    
-        }else{
-            $('#'+field['error_id']).html("");
-            input_error=false;
+        check_for_emptyness.forEach(function (field) {
+            let input_value = $('#' + field['id']).val();
+            if (input_value == "" ) {
+                $('#' + field['error_id']).html("**" + field['name'] + " should not be empty");
+                input_error = true;
+            } else {
+                $('#' + field['error_id']).html("");
+                input_error = false;
+            };
+        });
+
+        if (regex.test($("#nemail").val()) == false) {
+            $("#email_error").html("**Invalid Email Address ");
+            input_email_validation = true;
+        } else {
+            input_email_validation = false;
         };
-    });
 
-    if(regex.test($("#nemail").val())==false){
-        $("#email_error").html("**Invalid Email Address "); 
-        input_email_validation=true;  
-    }else{
-        input_email_validation=false;
-    };
-  
-    if(input_email_validation==false && password_comfirm_field==false && input_error==false){
-       // e.preventDefault();
-        console.log('my form submitted');
-    }else{
-       e.preventDefault();
-       console.log('my form not submitted');
-    }
-});
+        if (input_email_validation == false && password_comfirm_field == false && input_error == false) {
+           // e.preventDefault();
+            console.log('my form submitted');
+        } else {
+            e.preventDefault();
+            console.log('my form not submitted');
+        }
+    });
 
 //Check sign in Error massege
 //Check On click Error
-$(document).on("change","#nemailLogin",function()
-{
-   if ($("#nemailLogin").val()=="")
-   {
-    $("#email_login_error").html ("***Email Address should not be empty");
-   }else{
-    $("#email_login_error").html ("");
-   }
-});
+    $(document).on("change","#nemailLogin",function () {
+        if ($("#nemailLogin").val() == "") {
+            $("#email_login_error").html("***Email Address should not be empty");
+        } else {
+            $("#email_login_error").html("");
+        }
+    });
 
-$(document).on("change","#passLogin",function()
-{
-   if ($("#passLogin").val()=="")
-   {
-    $("#pass_login_error").html ("***Password should not be empty");
-   }else{
-    $("#pass_login_error").html ("");
-   }
-});
+    $(document).on("change","#passLogin",function () {
+        if ($("#passLogin").val() == "") {
+            $("#pass_login_error").html("***Password should not be empty");
+        } else {
+            $("#pass_login_error").html("");
+        }
+    });
 
 //Check on Submit
-$('#signin_form').on('submit', function(e){
+    $('#signin_form').on('submit', function (e) {
 
-   if ($("#nemailLogin").val()=="")
-   {
-    $("#email_login_error").html ("***Email Address should not be empty");
-    e.preventDefault();
-   }
-   if ($("#passLogin").val()=="")
-   {
-    $("#pass_login_error").html ("***Password should not be empty");
-    e.preventDefault();
-   }
-  
+        if ($("#nemailLogin").val() == "") {
+            $("#email_login_error").html("***Email Address should not be empty");
+            e.preventDefault();
+        }
+        if ($("#passLogin").val() == "") {
+            $("#pass_login_error").html("***Password should not be empty");
+            e.preventDefault();
+        }
 
-    
+
+
+    });
+
 });
-
-}); 
 
  //Code sample to call a method on its value changed event
  //$(document).on("change","#fname", function(){
@@ -163,7 +156,7 @@ $('#signin_form').on('submit', function(e){
  // non_empty_fields.pop{}
  // non_empty_fields.shift
  // non_empty_fields.unshift
- 
+
  // loop through array, Iteration
  // non_empty_fields.forEach(function(el){
  //     console.log(el);
@@ -190,7 +183,7 @@ let is_form_validated = function(){
                 return false;
             }else{
                 $("#fname_error").html("");
-                return true;  
+                return true;
             }
     };
    let last_name_validation = function(){
@@ -203,7 +196,7 @@ let is_form_validated = function(){
                 return false;
             }else{
                 $("#lname_error").html("");
-                return true;  
+                return true;
             }
     };
     let email_validation = function(){
@@ -217,7 +210,7 @@ let is_form_validated = function(){
                 return false;
             }else{
                 $("#email_error").html("");
-                return true;  
+                return true;
             }
     };
     let bday_validation = function(){
@@ -227,7 +220,7 @@ let is_form_validated = function(){
                 return false;
             }else{
                 $("#bday_error").html("");
-                return true;  
+                return true;
             }
     };
     let pass_validation = function(){
@@ -237,7 +230,7 @@ let is_form_validated = function(){
                 return false;
             }else{
                 $("#pass_error").html("");
-                return true;  
+                return true;
             }
     };
     let con_pass_validation = function(){
@@ -248,12 +241,12 @@ let is_form_validated = function(){
                 return false;
             }else{
                 $("#re_pass_error").html("");
-                return true;  
+                return true;
             }
     };
    first_name_validation(),last_name_validation(),email_validation(),bday_validation(),pass_validation(),con_pass_validation();
     if(first_name_validation()==true && last_name_validation()==true && email_validation() && bday_validation() && pass_validation() && con_pass_validation()){
-    
+
         return true;
     }else{
         return false;

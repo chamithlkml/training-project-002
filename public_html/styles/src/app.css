@@ -1,83 +1,81 @@
 *{
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
-.signup{
-	display: ;
-}
+
 .container{
-	color: #919191;
-	font-family: Arial;
-	width: 100%;
-	padding: 0px;
-	margin: 0px;
+    color: #919191;
+    font-family: Arial;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
 }
 
 .container-2{
-	width: 475px;
-	padding: 0px;
-	margin: 0px auto 0px auto;
-	background: rgb(144, 208, 209);
-	border-radius: 10px;
+    width: 475px;
+    padding: 0px;
+    margin: 0px auto 0px auto;
+    background: rgb(144, 208, 209);
+    border-radius: 10px;
 }
 
 .header{
-	width: 100%;
-	padding: 0px;
-	background: #eeeeeeff;
+    width: 100%;
+    padding: 0px;
+    background: #eeeeeeff;
 }
 
 .row-body{
-	width: 80%;
-	margin: 5px auto 5px auto;
-	padding: 1px;
+    width: 80%;
+    margin: 5px auto 5px auto;
+    padding: 1px;
 
 }
 
 .row{
-	width: 80%;
-	margin: 10px auto 20px auto;
-	background: #eeeeeeff;
-	border-radius: 10px;
+    width: 80%;
+    margin: 10px auto 20px auto;
+    background: #eeeeeeff;
+    border-radius: 10px;
 
 }
 
 .row-2{
-	width: 80%;
-	margin: 10px auto 0px auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    width: 80%;
+    margin: 10px auto 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 
 }
 
 .row-body2{
-	width: 50%;
-	padding: 0px 0px;
-  	display: table;
-  	margin: 0px auto 0px auto;
-  	clear: both;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    width: 50%;
+    padding: 0px 0px;
+    display: table;
+    margin: 0px auto 0px auto;
+    clear: both;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
 .footer{
-	width: 60%;
-	padding: 10px;
-	border-top: 1px solid black;
-	margin: 0px auto 10px auto;
+    width: 60%;
+    padding: 10px;
+    border-top: 1px solid black;
+    margin: 0px auto 10px auto;
 
-	
+
 }
 
 .text1{
-	color: blue;
-	text-align: center;
-	font-style: oblique;
-	padding: 12px;
+    color: blue;
+    text-align: center;
+    font-style: oblique;
+    padding: 12px;
 }
 
 .text2{
@@ -119,31 +117,41 @@ text-align: center;
   box-sizing: border-box;
   border: 1px solid #8a8a8a;
   background: #eeeeee;
-  
+
 }
 
 .formButton:active {
-	transform: scale(0.95);
+    transform: scale(0.95);
 }
 
 
 .formInput:focus {
-	border: 1px solid #227522;
-	background: #ffffff;
+    border: 1px solid #227522;
+    background: #ffffff;
 }
 
 .text_link_signup {
-	cursor: pointer;
-	color: rgb(39, 39, 160);
-	text-align: center;
-	font-style: oblique;
-	padding: 5px;	
+    cursor: pointer;
+    color: rgb(39, 39, 160);
+    text-align: center;
+    font-style: oblique;
+    padding: 5px;
 }
 .text_link_signup:hover {
-	text-decoration: underline;
-	color: blue;
+    text-decoration: underline;
+    color: blue;
 }
 h5{
-	text-align: left;
-	color: red;
+    text-align: left;
+    color: red;
+}
+
+.error-message{
+    color: red;
+    text-align: center;
+}
+
+.success-message{
+    color: turquoise;
+    text-align: center;
 }
