@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Installing required PHP and Node modules
+composer install

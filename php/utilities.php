@@ -29,4 +29,16 @@ class Utilities
     {
         return md5($data);
     }
+
+    public static function generateRandomString(int $length = 5): string
+    {
+        $dictionary = 'abcdefghijklmnopqrstuvwxwz';
+        $randomString = '';
+
+        while (strlen($randomString) < $length) {
+            $randomString .= $dictionary[rand(0, strlen($dictionary))];
+        }
+
+        return $randomString;
+    }
 }
