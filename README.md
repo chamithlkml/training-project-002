@@ -3,7 +3,7 @@ Basic training project for Name Feeder Technologies tainees
 
 ## Setup Guide
 - Clone the project
-- cd training-project-002
+- `cd training-project-002`
 - `mv php/.config.php php/config.php`
 - Fill the variables as below
 ```
