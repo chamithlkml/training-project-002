@@ -1,0 +1,57 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/var/www/html/
+    networks:
+      - app-network
+  server:
+    image: nginx:alpine
+    container_name: server
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+  mysql:
+    image: mariadb:latest
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file: .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+    volumes:
+      - dbdata:/var/lib/mysql
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  database:
+    driver: local

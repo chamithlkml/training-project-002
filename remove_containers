@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+docker image rm $(docker image ls "training-app*" -q)
+docker image rm $(docker image ls "mariadb" -q)
+docker image rm $(docker image ls "nginx" -q)
+docker volume rm $(docker volume ls -q|grep training-app)

@@ -2,3 +2,4 @@
 
 # Installing required PHP and Node modules
 composer install
+cd public_html && php-fpm

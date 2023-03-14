@@ -1,4 +1,3 @@
-CREATE database namefeeder;
 use namefeeder;
  CREATE TABLE users(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -10,7 +9,6 @@ use namefeeder;
     created_on DATETIME,
     updated_on DATETIME,
     deleted_on DATETIME
-
  );
 
 

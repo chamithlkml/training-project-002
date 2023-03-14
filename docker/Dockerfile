@@ -2,6 +2,9 @@ FROM php:8.1-fpm
 
 WORKDIR /var/www/html
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ=UTC
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -33,9 +36,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN chown -R www-data:www-data /var/www/html
 
-COPY ./docker/start-container /usr/local/bin/start-container
+COPY start-container /usr/local/bin/start-container
 RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 9000
 
-CMD ["php-fpm"]
+CMD ["start-container"]

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker compose up -d
+sleep 10
+docker exec -i mysql sh -c 'exec mariadb -uroot -p$MARIADB_ROOT_PASSWORD' < database/db.sql

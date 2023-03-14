@@ -68,6 +68,10 @@ try {
     $redirectPage = 'error.php';
     FlashMessage::setFlashMessage('error', $t->getMessage());
 } finally {
-    $database->disconnectFromDb();
+    
+    if(isset($database)){
+        $database->disconnectFromDb();
+    }
+    
     header("location:{$redirectPage}", true, 303);
 }
